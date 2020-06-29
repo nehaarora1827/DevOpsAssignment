@@ -32,5 +32,25 @@ stages
          }
       }
    }
+   stage('Uploading to Artifactory')
+   {
+      steps
+      {
+         rtMavenDeployer(
+            id: 'deployer',
+            serverId: 'Neha1234@artifactory',
+            releaseRepo: 'DevOpsAssignment_Neha',
+            snapshotRepo: 'DevOpsAssignment_Neha'
+         )
+         rtMavenRun(
+            pom: 'pom.xml',
+            goals: 'clean insatall',
+            deployerId: 'deployer'
+            )
+         rtPublishBuildInfo(
+            serverId: 'Neha1234@artifactory',
+            )
+      }
+   }
 }
 }
