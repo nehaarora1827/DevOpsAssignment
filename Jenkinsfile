@@ -44,7 +44,7 @@ stages
          )
          rtMavenRun(
             pom: 'pom.xml',
-            goals: 'clean insatall',
+            goals: 'clean install',
             deployerId: 'deployer'
             )
          rtPublishBuildInfo(
