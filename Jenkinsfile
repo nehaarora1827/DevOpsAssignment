@@ -58,5 +58,12 @@ stages
         bat 'docker build -t devopsimage:latest .'
       }
     }
+   stage('Docker Deployment-container run')
+   {
+      steps
+      {
+         bat 'docker run -d --name webAppContainer -p 9004:8080 devopsimage:latest'
+      }
+   }
 }
 }
